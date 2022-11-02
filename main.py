@@ -2,7 +2,7 @@ import qrcode
 class qr:
     def __init__(self, data):
         self.data = data
-        self.a = ''
+        self.name = ''
 
     def fname(self):
         name = self.name
@@ -10,7 +10,7 @@ class qr:
         for i in range(len(rip)):
             name = name + rip[i]
         name = name + '.png'
-        return a
+        return name
     
     def generate_qr(self, save):
         qr = qrcode.QRCode(
@@ -26,7 +26,7 @@ class qr:
         if save.strip() == 'True' or save.strip() == "T":
             img.save(name)
             print("Saving...")
-        
+        print(img)
         
         return img
 if __name__ == '__main__':
