@@ -6,11 +6,11 @@ class qr:
 
     def fname(self):
         name = self.name
-        rip = self.data.split()
-        for i in range(len(rip)):
+        rip = self.data.split() # Spilts the QR input by whitespace
+        for i in range(len(rip)): # for loop, to cycle through rip then builds a file name 
             name = name + rip[i]
         name = name + '.png'
-        return name
+        return name # returns the name of the file
     
     def generate_qr(self, save):
         qr = qrcode.QRCode(
@@ -21,13 +21,10 @@ class qr:
         )
         qr.add_data(self.data)
         qr.make(fit = True)
-        img = qr.make_image(fill_color="black", back_color="white")
-        name = self.fname()
-        if save.strip() == 'True' or save.strip() == "T":
-            img.save(name)
-            print("Saving...")
-        print(img)
-        
+        img = qr.make_image(fill_color="black", back_color="white") # Photo color settings 
+        name = self.fname() # Call function to provide a file name 
+        if save.strip() == 'True' or save.strip() == "T": # Checks to see if the img should be save or not
+            img.save(name)        
         return img
 if __name__ == '__main__':
     usr = input("Please Enter the QR code Value, follwed True or False:  ")
